@@ -3,4 +3,28 @@ puts instructions(__FILE__)
 
 class Bottles
 
+  def verse(number)
+    return "89 bottles of beer on the wall, 89 bottles of beer.
+Take one down and pass it around, 88 bottles of beer on the wall.\n" if number == 89
+    return "99 bottles of beer on the wall, 99 bottles of beer.
+Take one down and pass it around, 98 bottles of beer on the wall.\n" if number == 99
+    return "98 bottles of beer on the wall, 98 bottles of beer.
+Take one down and pass it around, 97 bottles of beer on the wall.\n" if number == 98
+    return "2 bottles of beer on the wall, 2 bottles of beer.
+Take one down and pass it around, 1 bottle of beer on the wall.\n" if number == 2
+    return "1 bottle of beer on the wall, 1 bottle of beer.
+Take it down and pass it around, no more bottles of beer on the wall.\n" if number == 1
+    return "No more bottles of beer on the wall, no more bottles of beer.
+Go to the store and buy some more, 99 bottles of beer on the wall.\n" if number == 0
+    return "#{number} bottles of beer on the wall, #{number} bottles of beer.
+Take one down and pass it around, #{number - 1} bottles of beer on the wall.\n"
+  end
+
+  def verses(end_verse, start_verse)
+    end_verse.downto(start_verse).collect {|verse_number| verse(verse_number) }.join("\n")
+  end
+
+  def song
+    verses(99, 0)
+  end
 end
