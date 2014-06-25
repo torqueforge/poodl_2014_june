@@ -1,8 +1,4 @@
-# Feel free to delete the instructions once you get going
-puts instructions(__FILE__)
-
 class House
-
 
   def line(number)
     return "This is the house that Jack built.\n" if number == 1
