@@ -52,6 +52,16 @@ Old MacDonald had a farm, E-I-E-I-O.]
     assert_equal expected, Farm.new(['pig']).lyrics
   end
 
+  def test_owl
+    expected =
+    %q[Old MacDonald had a farm, E-I-E-I-O,
+And on that farm he had an owl, E-I-E-I-O,
+With a hoot hoot here and a hoot hoot there,
+Here a hoot, there a hoot, everywhere a hoot hoot,
+Old MacDonald had a farm, E-I-E-I-O.]
+    assert_equal expected, Farm.new(['owl']).lyrics
+  end
+
   def test_pig_and_owl
     expected =
     %q[Old MacDonald had a farm, E-I-E-I-O,
