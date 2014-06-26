@@ -1,26 +1,64 @@
-# Feel free to delete the instructions once you get going
-puts instructions(__FILE__)
-
 class Bottles
 
   def verse(number)
-    case number
-    when 0
-      "No more bottles of beer on the wall, no more bottles of beer.\nGo to the store and buy some more, 99 bottles of beer on the wall.\n"
-    when 1
-      "1 bottle of beer on the wall, 1 bottle of beer.\nTake it down and pass it around, no more bottles of beer on the wall.\n"
-    when 2
-      "2 bottles of beer on the wall, 2 bottles of beer.\nTake one down and pass it around, 1 bottle of beer on the wall.\n"
-    else
-      "#{number} bottles of beer on the wall, #{number} bottles of beer.\nTake one down and pass it around, #{number - 1} bottles of beer on the wall.\n"
-    end
+    "#{quantity(number)} #{container(number)} of #{content} on the wall, " +
+    "#{quantity(number).downcase} #{container(number)} of #{content}.\n" +
+    "#{action(number)}, " +
+    "#{quantity(next_number(number)).downcase} #{container(next_number(number))} of #{content} on the wall.\n"
   end
 
-  def verses(end_verse, start_verse)
-    end_verse.downto(start_verse).collect {|verse_number| verse(verse_number) }.join("\n")
+  def verses(upper_bound, lower_bound)
+    upper_bound.downto(lower_bound).collect {|verse_number| verse(verse_number) }.join("\n")
   end
 
   def song
     verses(99, 0)
   end
+
+  private
+
+  def container(number)
+    if number == 1
+      "bottle"
+    else
+      "bottles"
+    end
+  end
+
+  def action(number)
+    if number == 0
+      "Go to the store and buy some more"
+    else
+      "Take #{pronoun(number)} down and pass it around"
+    end
+  end
+
+  def pronoun(number)
+    if number == 1
+      "it"
+    else
+      "one"
+    end
+  end
+
+  def quantity(number)
+    if number == 0
+      "No more"
+    else
+      "#{number}"
+    end
+  end
+
+  def next_number(number)
+    if number == 0
+      99
+    else
+      number - 1
+    end
+  end
+
+  def content
+    "beer"
+  end
+
 end
